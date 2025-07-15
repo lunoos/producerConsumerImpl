@@ -18,13 +18,15 @@ public class ConsumerImpl implements Consumer{
                         if (!queue.isEmpty()) {
                             task = queue.pullTask();
                         } else {
+                        while (queue.isEmpty()) {
                             try {
                                 queue.wait();
                             } catch (InterruptedException e) {
                                 Thread.currentThread().interrupt();
-                                break;
+                                return;
                             }
                         }
+                        
                     }
                     if (!running) {
                         break;

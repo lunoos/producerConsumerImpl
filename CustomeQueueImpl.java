@@ -21,7 +21,7 @@ public class CustomeQueueImpl implements CustomeQueue {
     }
 
     @Override
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return queue.isEmpty();
     }
 }
