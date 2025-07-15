@@ -22,5 +22,14 @@ class Main{
                 }
             }
         }
-    }   
+        // allow consumers some time to finish remaining tasks
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // gracefully stop consumer threads
+        consumer.stopConsumers();
+    }
 }
