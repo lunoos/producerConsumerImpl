@@ -1,10 +1,11 @@
 public class ProducerImpl implements Producer{
-    private CustomeQueue queue;
+    private CustomQueue queue;
 
-    public ProducerImpl(CustomeQueue queue){
+    public ProducerImpl(CustomQueue queue){
         this.queue = queue;
     }
 
+    @Override
     public void assignTask(Task task){
         System.out.println("Task: "+task.getName()+" is added to the queue.");
         queue.addTask(task);

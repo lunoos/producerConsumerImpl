@@ -5,9 +5,11 @@ public class TaskImpl implements Task{
         this.time = time;
         this.name = name;
     }
+    @Override
     public String getName(){
         return name;
     }
+    @Override
     public void execute(){
         System.out.println("Task executed in " + time + " seconds");
         try {

@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class CustomeQueueImpl implements CustomeQueue {
+public class CustomQueueImpl implements CustomQueue {
     
     private LinkedList<Task> queue = new LinkedList<>();
 

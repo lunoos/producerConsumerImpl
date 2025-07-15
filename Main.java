@@ -1,7 +1,7 @@
 class Main{
     public static void main(String[] args){
         System.out.println("Hello World");
-        CustomeQueue customeQueue = new CustomeQueueImpl();
+        CustomQueue customeQueue = new CustomQueueImpl();
         Producer producer = new ProducerImpl(customeQueue);
         Consumer consumer = new ConsumerImpl(customeQueue);
         for(int i=0; i<25; i++){

@@ -4,7 +4,7 @@ This project is a small demonstration of the producer/consumer pattern written i
 
 ## Project layout
 
-- `CustomeQueue` and `CustomeQueueImpl` – simple synchronized queue used to store tasks
+- `CustomQueue` and `CustomQueueImpl` – simple synchronized queue used to store tasks
 - `Task` and `TaskImpl` – abstraction of a unit of work
 - `Producer` and `ProducerImpl` – creates tasks and places them on the queue
 - `Consumer` and `ConsumerImpl` – three worker threads that wait on the queue and execute tasks

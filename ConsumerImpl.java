@@ -1,8 +1,8 @@
 public class ConsumerImpl implements Consumer{
     
-    private final CustomeQueue queue;
+    private final CustomQueue queue;
 
-    public ConsumerImpl(CustomeQueue queue) {
+    public ConsumerImpl(CustomQueue queue) {
         this.queue = queue;
         for (int i = 0; i < 3; i++) {
             Thread worker = new Thread(() -> {
