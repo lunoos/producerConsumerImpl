@@ -10,16 +10,15 @@ public class ConsumerImpl implements Consumer{
                     Task task = null;
                     System.out.println("current Thread" +Thread.currentThread().getName());
                     synchronized (queue) {
-                        if (!queue.isEmpty()) {
-                            task = queue.pullTask();
-                        }else{
+                        while (queue.isEmpty()) {
                             try {
                                 queue.wait();
                             } catch (InterruptedException e) {
                                 Thread.currentThread().interrupt();
-                                break;
+                                return;
                             }
                         }
+                        task = queue.pullTask();
                     }
                     if (task != null) {
                         System.out.println(Thread.currentThread().getName()+" executing the task: "+task.getName());
