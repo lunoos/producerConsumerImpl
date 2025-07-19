@@ -12,38 +12,17 @@ public class ConsumerImpl implements Consumer{
         for (int i = 0; i < 3; i++) {
             Thread worker = new Thread(() -> {
                 while (running) {
-                    Task task = null;
-                    System.out.println("current Thread" +Thread.currentThread().getName());
-                    synchronized (queue) {
-                        if (!queue.isEmpty()) {
-                            task = queue.pullTask();
-                        } else {
-                        while (queue.isEmpty()) {
-                            try {
-                                queue.wait();
-                            } catch (InterruptedException e) {
-                                Thread.currentThread().interrupt();
-                                return;
-                            }
-                        }
-                        
-                    }
-                    if (!running) {
-                        break;
-                    }
+                    Task task = queue.pullTask();
+
                     if (task != null) {
                         System.out.println(Thread.currentThread().getName()+" executing the task: "+task.getName());
                         task.execute(); // or any default time
+                        System.out.println(Thread.currentThread().getName()+" finish executing the task: "+task.getName());
                     } else {
-                        try {
-                            Thread.sleep(100); // Sleep briefly if no task
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                            break;
-                        }
+                        System.out.println("provided task is null");
                     }
-                }
-            },("Thread"+i));
+                   
+            }},("Thread"+i));
             worker.start();
             workers.add(worker);
         }
