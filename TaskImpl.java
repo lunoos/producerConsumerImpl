@@ -9,7 +9,7 @@ public class TaskImpl implements Task{
         return name;
     }
     public void execute(){
-        System.out.println("Task executed in " + time + " seconds");
+        //System.out.println("Task executed in " + time + " seconds");
         try {
             Thread.sleep(time * 1000);
         } catch (InterruptedException e) {
